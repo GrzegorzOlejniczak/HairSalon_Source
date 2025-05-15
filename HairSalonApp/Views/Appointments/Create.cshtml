@@ -1,0 +1,14 @@
+﻿@model HairSalonApp.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create">
+    <partial name="_Calendar" />
+</form> 
+@section Scripts {
+    <script src="~/js/calendar.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

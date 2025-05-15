@@ -1,0 +1,42 @@
+﻿@model HairSalonApp.Models.Appointment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Szczegóły wizyty</h1>
+
+<div>
+    <h4>Wizyta @Html.DisplayFor(model => model.AppointmentDate)</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AppointmentDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Service)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Service.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hairdresser)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hairdresser.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a class="btn btn-outline-primary" asp-action="Index">Powrót</a>
+</div>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<HairSalonApp.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+    var currentDate = DateTime.Now;
+}
+
+<h1>Moje wizyty</h1>
+<div class="container bg-light rounded-4 p-4">
+    <p>
+        <a class="btn btn-outline-primary" asp-action="Create">+ Nowa wizyta</a>
+    </p>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AppointmentDate)
+                </th>
+                @if (User.IsInRole("Hairdresser"))
+                {
+                    <th>
+                        Imię i nazwisko
+
+                    </th>
+                }
+                <th>
+                    @Html.DisplayNameFor(model => model.Service.Name)
+                
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Service.Duration)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Service.Price)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Hairdresser)
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+
+                var isFutureAppointment = item.AppointmentDate >= currentDate;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                    @if (User.IsInRole("Hairdresser"))
+                    {
+                        <!-- Jeśli fryzjer, wyświetl dane użytkownika -->
+                        <td>@item.User.Firstname @item.User.Lastname</td>
+                    }
+               <td>
+                    @if (item.Service != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Service.Name)
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Service != null)
+                    {
+                        
+                            var hours = item.Service.Duration / 60; // Godziny
+                        
+                        <p>@hours godz</p>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Service != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Service.Price)
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hairdresser.Firstname)
+                </td>
+                <td>
+                        @if (isFutureAppointment)
+                        { 
+                            <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Anuluj</a>
+                        } 
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

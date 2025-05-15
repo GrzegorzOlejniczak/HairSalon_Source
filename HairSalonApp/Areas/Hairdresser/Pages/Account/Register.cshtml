@@ -1,0 +1,72 @@
+﻿@page
+@model HairSalonApp.Areas.Hairdresser.Pages.Account.RegisterModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Utwórz konto dla osoby z zespołu</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Firstname" class="form-control" autocomplete="off" aria-required="true" placeholder="Imię" />
+                <label asp-for="Input.Firstname">Imię</label>
+                <span asp-validation-for="Input.Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Lastname" class="form-control" autocomplete="off" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Lastname">Nazwisko</label>
+                <span asp-validation-for="Input.Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="off" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Hasło" />
+                <label asp-for="Input.Password">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Powtórz hasło" />
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Zarejestruj się</button>
+        </form>
+        <br />
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+    </div>
+    <div class="col-md-6 ms-5 mt-5">
+        <h2>Lista Fryzjerów</h2>
+        <ul class="list-group">
+            @if (Model.Hairdressers?.Any() == true)
+            {
+
+                foreach (var hairdresser in Model.Hairdressers)
+                {
+                    <li class="list-group-item">
+                        <strong>@hairdresser.Firstname @hairdresser.Lastname</strong><br />
+                        Email: @hairdresser.Email
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="list-group-item">Brak fryzjerów w systemie.</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

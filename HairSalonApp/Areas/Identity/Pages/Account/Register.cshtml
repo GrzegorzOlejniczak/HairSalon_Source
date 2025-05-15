@@ -1,0 +1,75 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row bg-light rounded-4">
+    <div class="col-md-4 px-5 mt-2 pt-5">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Utwórz nowe konto!</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Firstname" class="form-control" autocomplete="off" aria-required="true" placeholder="Imię" />
+                <label asp-for="Input.Firstname">Imię</label>
+                <span asp-validation-for="Input.Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Lastname" class="form-control" autocomplete="off" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Lastname">Nazwisko</label>
+                <span asp-validation-for="Input.Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="off" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password">Hasło</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword">Powtórz Hasło</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-80 btn btn-lg btn-primary fs-5">Zarejestruj się</button>
+            <br /><br />
+            <p>
+                <a asp-page="./Login">Masz już konto? <b>Zaloguj sie!</b></a>
+            </p>
+
+        </form>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6 mt-5 pb-5 ms-5">
+        <h3>Witamy na naszej stronie!</h3>
+        <hr />
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/home/Profesjonalne_uslugi_fryzjerskie.png" class="d-block w-100 rounded-4" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/home/o_nas.png" class="d-block w-100 rounded-4" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/home/kontakt.png" class="d-block w-100 rounded-4" alt="...">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,75 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="row bg-light rounded-4 mt-5">
+    <div class="col-md-4 px-5 mt-3 pt-5">
+        <section>
+            <h3>Zaloguj się</h3>
+            <form id="account" method="post">
+                <hr />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Hasło" />
+                    <label asp-for="Input.Password" class="form-label">Hasło</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        Zapamiętaj mnie
+                    </label>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-50 btn btn-lg btn-primary">Zaloguj się</button>
+                </div>
+                <div>
+                    <br />
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Nie pamiętam hasła</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Nie masz konta? <b>Zarejestruj się</b></a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6 mt-5 pb-5 ms-5">
+            <h3>Witamy ponownie!</h3>
+            <hr />
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/images/home/Profesjonalne_uslugi_fryzjerskie.png" class="d-block w-100 rounded-4" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/home/o_nas.png" class="d-block w-100 rounded-4" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/home/kontakt.png" class="d-block w-100 rounded-4" alt="...">
+                    </div>
+                </div>
+
+            </div>
+           
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

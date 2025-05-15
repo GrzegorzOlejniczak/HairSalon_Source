@@ -1,0 +1,31 @@
+﻿@model HairSalonApp.Models.Appointment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h4>Zaktualizuj swoją wizytę</h4>
+<hr />
+
+<div class="mb-4">
+    <h5>Informacje o edytowanej wizycie</h5>
+    <p><strong>Data wizyty:</strong> @Model.AppointmentDate.ToString("dd-MM-yyyy HH:mm")</p>
+    <p><strong>Usługa:</strong> @Model.Service.Name</p>
+    <p><strong>Cena:</strong> @Model.Service.Price.ToString("C")</p>
+</div>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <partial name="_Calendar" />
+
+</form>
+<br />
+<div>
+    <a class="btn btn-outline-primary" asp-action="Index">Powrót</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/calendar.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

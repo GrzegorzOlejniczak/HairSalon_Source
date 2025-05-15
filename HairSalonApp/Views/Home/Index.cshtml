@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container2 bg-light rounded-4 p-5">
+    <div class="row text-left">
+        <div class="col-md-12">
+            <h1>Witaj w naszym salonie!</h1>
+            <p>Znajdź idealnego fryzjera i zarezerwuj swoją wizytę online!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/images/home/Profesjonalne_uslugi_fryzjerskie.png" class="card-img-top" alt="Haircut">
+                <div class="card-body">
+                    <h5 class="card-title">Profesjonalne Usługi Fryzjerskie</h5>
+                    <p class="card-text">Nasza oferta obejmuje szeroki wachlarz usług fryzjerskich dla każdego.</p>
+                    <a href="@Url.Action("Index", "Services")" class="btn btn-primary">Zobacz usługi</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/images/home/o_nas.png" class="card-img-top" alt="Salon">
+                <div class="card-body">
+                    <h5 class="card-title">O nas</h5>
+                    <p class="card-text">Dowiedz się więcej o naszym zespole i historii salonu.</p>
+                    <a href="@Url.Action("Index", "About")" class="btn btn-primary">Poznaj nas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/images/home/kontakt.png" class="card-img-top" alt="Contact">
+                <div class="card-body">
+                    <h5 class="card-title">Kontakt</h5>
+                    <p class="card-text">Skontaktuj się z nami, aby zarezerwować wizytę lub uzyskać więcej informacji.</p>
+                    <a href="@Url.Action("Index", "About")" class="btn btn-primary">Skontaktuj się</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4">
+            <h4 class="alert-heading">Załóż konto, aby umówić się na pierwszą wizytę!</h4>
+            <p>Rejestrując się u nas, zyskasz łatwy dostęp do terminarza i pełnej oferty usług fryzjerskich. Przejdź do formularza rejestracyjnego i stwórz swoje konto, aby szybko umówić się na wizytę!</p>
+            <hr>
+            <p class="mb-0">
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Załóż konto</a>
+            </p>
+        </div>
+    </div>
+</div>

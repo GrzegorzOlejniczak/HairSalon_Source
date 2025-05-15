@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@using HairSalonApp.Models
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+
+    var user = await UserManager.GetUserAsync(User);
+    var profilePicturePath = user?.ProfilePicturePath;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+
+            <div class="d-flex justify-content-start stylist">
+                <img src="@(string.IsNullOrEmpty(profilePicturePath) ? "/images/blank_profile.png" : profilePicturePath)" alt="Zdjęcie profilowe" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="profilePicture">Zmień zdjęcie profilowe</label>             
+                <input asp-for="Input.ProfilePicture"  type="file" name="ProfilePicture" id="profilePicture" class="form-control mt-2" />
+            </div><br /> 
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            @* <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div> *@
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Zapisz</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

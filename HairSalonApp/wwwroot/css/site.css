@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+
+/*Tekst g³ówny: #4a4a4a (grafitowy)
+Nag³ówki: #7b4e32 (ciep³y br¹z)
+Linki: #506680 (ciemny niebieski)
+Linki hover: #d49b6a (terakota)
+Tekst w ciemnym tle: #f4e8dc (z³amana biel)*/
+
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.logo{
+    border-radius: 13px; 
+}
+
+
+.profile-button {
+    padding: 1px;
+    display: inline-block;
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #0d6efd;
+    overflow: hidden;
+}
+
+    .profile-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+
+
+.month {
+    padding: 10px;
+    width: 100%;
+    background: #258cfb;
+    text-align: center;
+    border-radius: 10px;
+}
+
+    .month ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .month ul li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+    .month .prev {
+        float: left;
+        cursor: pointer;
+    }
+
+    .month .next {
+        float: right;
+        cursor: pointer;
+    }
+
+.weekdays {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+    .weekdays li {
+        flex: 1;
+        text-align: center;
+        color: #666;
+        margin-top: 10px;
+        background-color: #ccc;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .weekdays .taken {
+        text-decoration: line-through;
+        opacity: 0.5;
+        cursor: no-drop;
+    }
+
+.days {
+    padding: 10px;
+    background: #eee;
+    margin: 5px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+    .days li {
+        list-style-type: none;
+        text-align: center;
+        font-size: 13px;
+        color: #777;
+        background-color: #ddd;
+        padding: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .days .active {
+        background: #258cfb;
+        color: white !important;
+    }
+
+    .days .taken {
+        text-decoration: line-through;
+        opacity: 0.5;
+        cursor: no-drop;
+    }
+
+.hours {
+    margin: 10px;
+    padding: 10px;
+    margin: 5px;
+    overflow-x: scroll;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+    .hours::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .hours::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .hours::-webkit-scrollbar-thumb {
+        background: #258cfb;
+        border-radius: 10px;
+    }
+
+        .hours::-webkit-scrollbar-thumb:hover {
+            background: #0d6efd;
+        }
+
+    .hours li {
+        display: inline-block;
+        width: 13.6%;
+        color: #666;
+        text-align: center;
+        margin-top: 10px;
+        background-color: #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .hours .taken {
+        text-decoration: line-through;
+        opacity: 0.5;
+        cursor: no-drop;
+    }
+
+    .hours .active {
+        background: #258cfb;
+        color: white !important;
+    }
+
+.stylists {
+    display: flex;
+    justify-content: start;
+    margin: 15px 9px 0 0;
+}
+
+.stylist {
+    text-align: center;
+    margin: 0 15px;
+}
+
+    .stylist img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+    }
+
+    .stylist p {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .stylist .selected {
+        border: 4px solid #0d6efd;
+    }
+.profilePicture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.empty {
+    opacity: 0.5;
+    cursor: no-drop;
+}
+
+.select-service {
+    width: 340px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+    .select-service:focus {
+        border-color: #258cfb;
+        outline: none;
+    }
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    button:hover {
+        background-color: #16a085;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        background-color: #1abc9c;
+        transform: translateY(0);
+    }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.container .container2 {
+    margin-top: 50px;
+}
+form button:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 390px) {
+    .weekdays li, .days li {
+        width: 12.2%;
+    }
+}
+
+
+

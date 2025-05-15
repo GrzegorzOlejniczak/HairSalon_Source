@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HairSalonApp.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "O nas";
+}
+
+<div class="container">
+    <!-- Informacje kontaktowe i mapa -->
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Kontakt i lokalizacja</h3>
+                    <div class="mb-4">
+                        <h5>Dane kontaktowe</h5>
+                        <p><i class="bi bi-telephone-fill me-2"></i><strong>Telefon:</strong> +48 123 456 789</p>
+                        <p><i class="bi bi-envelope-fill me-2"></i><strong>Email:</strong> kontakt@hairsalona.pl</p>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Adres</h5>
+                        <p><i class="bi bi-geo-alt-fill me-2"></i>Salon Fryzjerski</p>
+                        <p class="ms-4">ul. Przykładowa 10</p>
+                        <p class="ms-4">00-000 Poznań</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Nasza lokalizacja</h3>
+                    <div class="rounded-4 overflow-hidden">
+                        <iframe width="100%"
+                                height="300"
+                                frameborder="0"
+                                style="border:0"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.883855479569!2d21.012228415719264!3d52.22967597975779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669f9d82a1%3A0x6452f69bd32f7c6c!2sPoznan%2C%20Polska!5e0!3m2!1spl!2spl!4v1234567890"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekcja fryzjerów -->
+    <div class="mb-5">
+        <h2 class="text-left mb-4">Nasz zespół</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-left">
+                            @foreach (var hairdresser in Model)
+
+                            {
+                                <div class="text-center m-2">
+                                    <img class="profilePicture"
+                                         src="@(string.IsNullOrEmpty(hairdresser.ProfilePicturePath) ? "/images/blank_profile.png" : hairdresser.ProfilePicturePath)"
+                                         alt="@hairdresser.Firstname"
+                                        />
+                                    <h5 class="mt-3">@hairdresser.Firstname</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
